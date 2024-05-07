@@ -1,0 +1,26 @@
+
+v-container{
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.v-container iframe {
+  
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  border: none;
+}
+
+.button-flax{
+  display: flex;
+  gap:1rem;
+}
+
+.button-flax button{
+  padding:0.5rem;
+  border-radius:0.5rem;
+
+}

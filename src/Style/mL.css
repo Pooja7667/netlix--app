@@ -1,0 +1,16 @@
+.contain-all {
+  background-color: black;
+  overflow-x: hidden;
+  width: 100vw;
+}
+
+.list-flex {
+  display: flex;
+  gap: 0.5rem;
+  overflow-x:scroll;
+}
+
+.p-title {
+  color: hsl(0, 94%, 51%);
+  font-size: larger;
+}

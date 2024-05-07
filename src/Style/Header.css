@@ -1,0 +1,42 @@
+/* header.css */
+
+header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: transparent;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  height:1rem;
+  background-image: linear-gradient(rgb(24, 24, 24), rgb(74, 51, 51));
+}
+
+.navbar-brand {
+  margin: 0;
+  font-size: 2rem;
+  color: #ea0b0b; /* Change the color as needed */
+}
+
+.nav-links {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+
+
+
+button{
+  background-color: #ea0b0b;
+  color: aliceblue;
+  top:0.5rem;
+  padding:0.5rem;
+  border-radius:5px;
+}

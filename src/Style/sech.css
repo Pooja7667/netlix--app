@@ -1,0 +1,33 @@
+.f-div {
+  margin-top: 10%;
+  flex-direction: column-reverse;
+  justify-content: center;
+  left: 0;
+}
+
+.input-field {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 300px;
+}
+
+.b-submit {
+  padding: 10px 20px;
+  background-color: #fa1818;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.b-submit:hover {
+  background-color: #f20909;
+}
+
+.searchList {
+  width: 100vw;
+  overflow-wrap: wrap;
+  left: 0;
+}

@@ -1,10 +1,10 @@
 import React from "react";
 import "../Style/sech.css";
-import { useState } from "react";
-import axios from "axios";
-import { useDispatch, useSelector } from "react-redux";
-import { setSearchMovieDtaiDetails } from "../redux/searchSlice";
-import ListMovie from "./ListMovie";
+import { useState } from "react";// Importing component-specific styles
+import axios from "axios";  // Importing useState hook from React
+import { useDispatch, useSelector } from "react-redux"
+import { setSearchMovieDtaiDetails } from "../redux/searchSlice";// Importing action creator from Redux slice
+import ListMovie from "./ListMovie";  // Importing ListMovie component
 
 const options = {
   method: "GET",
@@ -16,26 +16,27 @@ const options = {
 };
 
 const SearchBar = () => {
-  const [searchMovie, setSearchMovie] = useState("");
+  const [searchMovie, setSearchMovie] = useState(""); // useing use STATE
   const dispatch = useDispatch();
   const { moveiName, searchedMovei } = useSelector(
     (store) => store.searchMovie
   );
 
   const HeandalSearch = async (event) => {
-    event.preventDefault();
+    event.preventDefault(); // Prevent default form submission behavior
 
     const url = `https://api.themoviedb.org/3/search/movie?query=${searchMovie}&include_adult=false&language=en-US&page=1`;
-    
+
     try {
       const res = await axios.get(url, options);
       console.log("res=", res);
-      const moveis = res?.data?.results;
+      const moveis = res?.data?.results; // Extracting movie results from response
+         // Storing search query
       const searchedMovei = searchMovie;
       console.log("mm=", moveis);
       dispatch(setSearchMovieDtaiDetails({ searchedMovei, moveis }));
     } catch (error) {
-      console.log(error);
+      console.log(error); // Log any errors
     } finally {
       setSearchMovie("");
     }
@@ -86,3 +87,4 @@ const SearchBar = () => {
 };
 
 export default SearchBar;
+//  Exporting SearchBar component

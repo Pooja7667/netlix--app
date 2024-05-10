@@ -12,53 +12,65 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
+  // Login component responsible for rendering the login/signup form
   const isLoading = useSelector((store) => store.app.isLoading);
-
+  // State variables to manage form inputs and login/signup mode
   const loginHandler = () => {
     setIsLogin(!isLogin);
   };
-
+  // Function to handle form submission
   const getInputData = async (e) => {
     e.preventDefault();
     dispatch(setLoading(true));
-
+    // Function to toggle between login and signup modes
     try {
       let user;
       if (isLogin) {
         // Login
         user = { email, password };
-        const res = await axios.post("http://localhost:5000/login", user, {
-          headers: {
-            "Content-Type": "application/json",
-          },
-          withCredentials: true,
-        });
-        console.log( "tot=",res);
+        const res = await axios.post(
+          "https://entertainmentbackend-4bjs.onrender.com/login",
+          user,
+          {
+            headers: {
+              "Content-Type": "application/json",
+            },
+            withCredentials: true,
+          }
+        );
+        console.log("tot=", res); // Display success toast message if registration is successful
         if (res.data.success) {
-           console.log("massage =", res.data.success);
+          console.log("massage =", res.data.success);
           toast.success(res.data.message);
         }
+        // React Router hook for navigation
+
         dispatch(setUser(res.data.user));
         navigate("/browser");
       } else {
         // Register
         user = { fname, email, password };
-        const res = await axios.post("http://localhost:5000/register", user, {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        });
-
+        const res = await axios.post(
+          "https://entertainmentbackend-4bjs.onrender.com/register",
+          user,
+          {
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
+        // Display success toast message if registration is successful
         if (res.data.success) {
           toast.success(res.data.message);
         }
-        setIsLogin(true);
+        setIsLogin(true); // Switching to login mode after successful registration
       }
     } catch (error) {
+      // Display error toast message if an error occurs during login/signup
       toast.error(error?.response?.data?.message || "An error occurred");
       console.log(error);
     } finally {
+      // Dispatching an action to set loading state to false after login/signup attempt
       dispatch(setLoading(false));
       setEmail("");
       setPassword("");
@@ -101,10 +113,11 @@ const Login = () => {
             required
           />
         </div>
-
+        {/* Message for switching between login and signup modes */}
         <button type="submit" className="button">
           {`${isLoading ? "loading..." : isLogin ? "Login" : "Signup"}`}
         </button>
+        {/* Button to toggle between login and signup modes */}
         <p>
           {isLogin ? " Don't have an account?" : "Already have an account?"}
           <span onClick={loginHandler}> {isLogin ? "Register " : "Login"}</span>

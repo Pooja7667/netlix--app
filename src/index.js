@@ -9,6 +9,7 @@ import Login from "./Component/Login";
 import Register from "./Component/Register";
 import Browser from "./Component/Browser";
 import DetailPage from "./Component/DetailPage";
+import Bookmark from "./Component/Bookmark";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -29,8 +30,13 @@ const router = createBrowserRouter([
   },
 
   {
-    path: "/detailPage/:id",
+    path: "/detailPage",
     element: <DetailPage />,
+  },
+
+  {
+    path: "/bookmark",
+    element: <Bookmark />,
   },
 ]);
 

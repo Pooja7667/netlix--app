@@ -55,3 +55,6 @@ export const useUpComeingMovei = async () => {
     console.log(error);
   }
 };
+
+
+ 
